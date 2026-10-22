@@ -28,7 +28,7 @@
                 if (key==="children"){
                     continue;
                 }
-                domelement.setAttribute(key,reactElement.props[key])
+                domelement.setAttribute(key,reactElement.props.key)
                 console.log(domelement);
                 custom_render.append(domelement)
             }

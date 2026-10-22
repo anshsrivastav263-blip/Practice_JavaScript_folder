@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            width: 100%;
+            min-height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .box {
+            width: 600px;
+            background: linear-gradient(45deg, black, white);
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            grid-auto-rows: minmax(200px, auto);
+            gap: 10px;
+            grid-template-areas:
+                "header header aside"
+                "main footer footer";
+            padding: 10px;
+        }
+
+        .boxs {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            border: 2px solid white;
+            border-radius: 10px;
+            font-size: clamp(1rem, 2vw, 2rem);
+            overflow-wrap: anywhere;
+            object-fit: cover;
+        }
+
+        .boxs img {
+            width: 100%;
+            height: 100%;
+            /* background-position: center; */
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .header {
+            grid-area: header;
+        }
+
+        .aside {
+            grid-area: aside;
+        }
+
+        .main {
+            grid-area: main;
+        }
+
+        .footer {
+            grid-area: footer;
+        }
+
+        @media (max-width:800px) {
+            .box{
+                width: 400px;
+            }
+        }
+
+        @media (max-width:600px) {
+            .box{
+                width: 300px;
+            }
+        }
+        /* @media (max-width: 500px) {
+            .box {
+                grid-template-columns: 1fr;
+                grid-template-areas:
+                    "header"
+                    "aside"
+                    "main"
+                    "footer";
+            }
+        } */
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="header boxs">
+            <img src="https://images.unsplash.com/photo-1755973707174-47be69f3d037?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D" alt="girl">
+        </div>
+        <div class="aside boxs">
+            <img src="https://images.unsplash.com/photo-1792102416706-450b1d94601c?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D" alt="girl">
+        </div>
+        <div class="main boxs">
+            <img src="https://images.unsplash.com/photo-1791869270254-559353fd0e7c?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D" alt="girl">
+        </div>
+        <div class="footer boxs">
+            <img src="https://images.unsplash.com/photo-1791395028340-a5cc20010127?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=NHwxMjA3fDE%3D" alt="girl">
+        </div>  
+    </div>
+</body>
+</html>

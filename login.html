@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(45deg,black,white);
+        }
+        .container{
+            width: max(340px,240px);
+            /* background-color: rgba(255,255,255,0.8); */
+            background: linear-gradient(45deg,white,black,white,black);
+            backdrop-filter: blur(15px);
+            padding: 40px 20px;
+            border: 10px solid white;
+            border-radius: 22px;
+            box-shadow: 0px 10px 10px 5px rgba(0,0,0,0.8);
+                        /* 0px -5px -5px -5px rgba(0,0,0,0.8); */
+        }
+        .container .heading{
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .input-box{
+            position: relative;
+            margin-bottom: 30px;
+        }
+        .input-box input{
+            width: 100%;
+            outline: none;
+            border: 2px solid black;
+            border-radius: 8px;
+            padding: 10px;
+        }
+        .input-box label{
+            position: absolute;
+            top: 10px;
+            left: 12px;
+            transition: all 0.3s ease-in-out;
+        }
+        .input-box input:valid+label,
+        .input-box input:focus+label{
+            color: black;
+            font-weight: 600;
+            top: -25px;
+            left: 15px;
+        }
+        .links{
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            color: white;
+        }
+        .links a{
+            color: white;
+            font-size: 15px;
+        }
+        .links input{
+            font-size: 15px;
+        }
+        .container .btn{
+            width: 100%;
+            background-color: black;
+            color: white;
+            padding: 10px;
+            border: 2px solid white;
+            border-radius: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form action="">
+                <h2 class="heading">
+                Login
+            </h2>
+
+            <div class="input-box">
+                <input type="text" class="username" id="username" required>
+                <label for="username">Username :</label>
+            </div>
+
+            <div class="input-box">
+                <input type="password" class="password" id="password" required>
+                <label for="password">Password :</label>
+            </div>
+
+            <div class="input-box">
+                <input type="email" class="email" id="email" required>
+                <label for="email">Email :</label>
+            </div>
+
+            <div class="input-box">
+                <input type="date" required>
+                <!-- <label for="date">Date</label> -->
+            </div>
+
+            <div class="links">
+                <div class="forget">
+                    <input type="checkbox" class="remember" id="remember">
+                    <label for="remember">Remember</label>
+                </div>
+                <a href="#">Forget Password ?</a>
+            </div>
+
+            <button class="btn" id="btn">Login</button>
+        </form>
+    </div>
+    <script>
+        const form=document.querySelector("form");
+
+        form.addEventListener("submit",(e)=>{
+            // Page refresh रोकना
+            e.preventDefault()
+
+            const username=document.querySelector(".username");
+            const password=document.querySelector(".password");
+            const email=document.querySelector(".email");
+
+            // =========================
+            // Username Validation
+            // =========================
+            if(username.value.trim()===""){
+                alert("Enter username !")
+                return
+            }
+
+            // =========================
+            // Password Validation
+            // =========================
+            if(password.value.trim()===""){
+                alert("Enter username !")
+                password.focus();
+                return
+            }
+            if (password.value.length < 8) {
+                alert("Password must be at least 8 characters!");
+                password.focus();
+                return;
+            }
+
+             // =========================
+            // Email Validation
+            // =========================
+
+            if(email.value.trim()===""){
+                alert("Enter Email !")
+                email.focus();
+                return
+            }
+
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if (!emailPattern.test(email.value)) {
+                alert("Valid Email डालिए!");
+                email.focus();
+                return;
+            }
+
+            // =========================
+            // Success
+            // =========================
+            alert("Login Successful!");
+            form.reset();
+        })
+    </script>
+</body>
+</html>
